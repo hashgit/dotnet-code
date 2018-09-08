@@ -3,5 +3,6 @@
     public enum FeedProviderType
     {
         Wolferhampton = 1,
+        Caulfield = 2,
     }
 }

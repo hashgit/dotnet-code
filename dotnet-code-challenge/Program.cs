@@ -10,13 +10,21 @@ namespace dotnet_code_challenge
         {
             Console.WriteLine("Hello World!");
 
+            PrintHorsesOrdered(FeedProviderType.Wolferhampton);
+            PrintHorsesOrdered(FeedProviderType.Caulfield);
+
+            Console.ReadKey();
+        }
+
+        static void PrintHorsesOrdered(FeedProviderType type)
+        {
             var manager = new DataFeedProvider();
-            var participants = manager.GetParticipants(FeedProviderType.Wolferhampton);
+            var participants = manager.GetParticipants(type);
 
             if (participants.IsValid)
             {
                 var sortedList = participants.Data.OrderBy(x => x.Price);
-                foreach(var e in sortedList)
+                foreach (var e in sortedList)
                 {
                     Console.WriteLine($"{e.Name} {e.Price}");
                 }
@@ -25,8 +33,6 @@ namespace dotnet_code_challenge
             {
                 Console.WriteLine(participants.Error);
             }
-
-            Console.ReadKey();
         }
     }
 }
