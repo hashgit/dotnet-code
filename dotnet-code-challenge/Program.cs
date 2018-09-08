@@ -1,4 +1,4 @@
-﻿using dotnet_code_challenge.Providers.Wolferhampton;
+﻿using dotnet_code_challenge.Providers;
 using System;
 using System.Linq;
 
@@ -10,8 +10,8 @@ namespace dotnet_code_challenge
         {
             Console.WriteLine("Hello World!");
 
-            var provider = new WolferhamptonFeed();
-            var participants = provider.GetParticipants();
+            var manager = new DataFeedProvider();
+            var participants = manager.GetParticipants(FeedProviderType.Wolferhampton);
 
             if (participants.IsValid)
             {
