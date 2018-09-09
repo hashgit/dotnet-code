@@ -23,6 +23,8 @@ namespace dotnet_code_challenge
 
             if (participants.IsValid)
             {
+                // sorting can be pushed down to the business object
+                // if it is a business requirement or just a display requirement?
                 var sortedList = participants.Data.OrderBy(x => x.Price);
                 foreach (var e in sortedList)
                 {
