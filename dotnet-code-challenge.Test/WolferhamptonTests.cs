@@ -6,10 +6,10 @@ namespace dotnet_code_challenge.Test
     public class WolferhamptonFeedTests
     {
         [Fact]
-        public void CanReadJson()
+        public async void CanReadJson()
         {
             var provider = new WolferhamptonFeed();
-            var response = provider.GetParticipants();
+            var response = await provider.GetParticipants();
 
             Assert.True(response.IsValid);
             Assert.Equal(2, response.Data.Count);

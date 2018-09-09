@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml;
 using dotnet_code_challenge.Providers.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotnet_code_challenge.Providers.Caulfield
 {
@@ -11,11 +12,11 @@ namespace dotnet_code_challenge.Providers.Caulfield
     {
         private const string FeedPath = "FeedData/Caulfield_Race1.xml";
 
-        public FixtureResponse<Participant> GetParticipants()
+        public async Task<FixtureResponse<Participant>> GetParticipants()
         {
             try
             {
-                var feed = File.ReadAllText(FeedPath);
+                var feed = await File.ReadAllTextAsync(FeedPath);
 
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(new StringReader(feed));

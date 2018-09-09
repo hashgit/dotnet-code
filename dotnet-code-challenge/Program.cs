@@ -16,10 +16,10 @@ namespace dotnet_code_challenge
             Console.ReadKey();
         }
 
-        static void PrintHorsesOrdered(FeedProviderType type)
+        static async void PrintHorsesOrdered(FeedProviderType type)
         {
             var manager = new DataFeedProvider();
-            var participants = manager.GetParticipants(type);
+            var participants = await manager.GetParticipants(type);
 
             if (participants.IsValid)
             {

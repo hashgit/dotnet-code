@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotnet_code_challenge.Providers.Wolferhampton
 {
@@ -10,11 +11,11 @@ namespace dotnet_code_challenge.Providers.Wolferhampton
     {
         private const string FeedPath = "FeedData/Wolferhampton_Race1.json";
 
-        public FixtureResponse<Models.Participant> GetParticipants()
+        public async Task<FixtureResponse<Models.Participant>> GetParticipants()
         {
             try
             {
-                var json = File.ReadAllText(FeedPath);
+                var json = await File.ReadAllTextAsync(FeedPath);
                 var model = JsonConvert.DeserializeObject<Fixture>(json);
 
                 var participants = model.RawData?.Markets
